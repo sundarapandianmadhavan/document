@@ -50,6 +50,10 @@ if configured the pod disruption mode need to change the surge node to 50%
 
 upgrade the master node
 
+Update the RBAC in AKS powershell
+
+#az aks update --resource-group <resource_groupname> --name <clustername> --enable-azure-rbac
+
 #az aks upgrade --resource-group <resource_groupname> --name <clustername> --kubernetes-version 1.22.4(need to update the version)
 
 #kubectl get events
