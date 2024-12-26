@@ -27,5 +27,30 @@ create load balancer az command
 --outbound-type loadbalancer
 --
 
+taints and tolreations
 
+az aks nodepool add \
+    --resource-group <resource groupname> \
+    --cluster-name <cluster_name> \
+    --name taintnp \
+    --node-taints sku=gpu:NoSchedule \
+    --no-wait
+
+add the node pool
+
+#az aks nodepool add --resource-group <resource_group> --cluster-name <clustername> --name taintpool --node-tainets env=test:NoSchedule --node-count 1 --node-vm-size Standard_B2s --no-wait
+
+AKS upgrade:
+
+#az aks get-upgrades --resource-group <resource_groupname> --name <cluster_name>
+
+if configured the pod disruption mode need to change the surge node to 50%
+
+#az aks nodepool update -n nodepool -g <resource_groupname> --cluster-name <clustername> --max-surge 50%
+
+upgrade the master node
+
+#az aks upgrade --resource-group <resource_groupname> --name <clustername> --kubernetes-version 1.22.4(need to update the version)
+
+#kubectl get events
 
